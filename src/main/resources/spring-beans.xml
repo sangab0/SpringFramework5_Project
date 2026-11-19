@@ -5,5 +5,24 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<!-- StringPrinter 클래스를 Spring Bean으로 설정 -->	
+	<bean id="strPrinter" class="myspring.di.xml.StringPrinter" />
 
+	<!--ConsolePrinter 클래스를 SpringBean으로 설정 -->
+	<bean id="conPrinter" class="myspring.di.xml.ConsolePrinter" />
+	
+	<!--Hello 클래스를 SpringBean으로 설정 Setter Injection 방식 -->
+	<bean id="hello" class="myspring.di.xml.Hello" scope="singleton">
+		<!-- Hello 클래스의 setName() 메서드를 호출하여 "스프링"이라는 값을 주입한다는 의미 -->
+		<property name="name" value="스프링" />
+		<!-- Hello 클래스의 setPrinter() 메서드를 호출하여 StringPrinter 객체(strPrinter)를 주입한다는 의미 -->
+		<property name="printer" ref="strPrinter" />
+	</bean>
+	
+	<!--Hello 클래스를 SpringBean으로 설정  Constructor Injection 방식 -->
+	<bean id="helloCons" class="myspring.di.xml.Hello">
+		<constructor-arg index="0" value="생성자" />
+		<constructor-arg index="1" ref="conPrinter" />
+	</bean>
+	
 </beans>

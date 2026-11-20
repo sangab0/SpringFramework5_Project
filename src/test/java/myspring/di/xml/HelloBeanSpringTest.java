@@ -37,14 +37,17 @@ public class HelloBeanSpringTest {
 		assertEquals("Hello 생성자", hello3.sayHello());
 		
 		hello2.print();
-		
-		hello2.print();
-		
-
 	}
 	
 	@Test
 	void list() {
+		for(String value:hello2.getNames()) {
+			System.out.println(value);
+		}
+		
+		assertEquals(4, hello2.getNames().size());
+		assertEquals("스프링프레임워크", hello2.getNames().get(0));
+
 		
 	}
 	

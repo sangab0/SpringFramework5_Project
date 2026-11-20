@@ -22,9 +22,9 @@ public class HelloBeanJunitTest {
 	@Test
 	void hello() {
 
-		// 2. Hello Baen을 Container에게 요청하기 Bean의 id를 기준으로 Bean을 요청하기
+		// 2. Hello Bean을 Container에게 요청하기 Bean의 id를 기준으로 Bean을 요청하기
 		Hello helloById = (Hello)factory.getBean("hello");
-		// 2-1 Hello Baen을 Container에게 요청하기 Bean의 id와 Type을 기준으로 Bean을 요청하기
+		// 2-1 Hello Bean을 Container에게 요청하기 Bean의 id와 Type을 기준으로 Bean을 요청하기
 		// 위보다 이걸 더 권장함 
 		Hello helloByType =  factory.getBean("hello", Hello.class);
 		

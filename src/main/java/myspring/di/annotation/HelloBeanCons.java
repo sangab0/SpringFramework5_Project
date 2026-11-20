@@ -24,7 +24,8 @@ public class HelloBeanCons {
 	List<String> names;
 
 	public HelloBeanCons(
-			@Value("어노테이션생성자") String name, 
+			// 어노테이션 생성자 
+			@Value("${app.construtor.name}") String name, 
 			@Qualifier("consolePrinter") PrinterBean printer) {
 		System.out.println(this.getClass().getName() + " 인지가 있는 생성자 호출됨!");
 		this.name = name;
@@ -35,6 +36,7 @@ public class HelloBeanCons {
 		return this.names;
 	}
 
+	@Value("#{'${app.namelist}'.split(',')}")
 	public void setNames(List<String> list) {
 		this.names = list;
 	}

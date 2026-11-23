@@ -13,7 +13,7 @@ import myspring.di.xml.Printer;
 import myspring.di.xml.StringPrinter;
 
 @Configuration
-@PropertySource(value = "calsspath:values.properties")
+@PropertySource(value = "classpath:values.properties")
 public class HelloConfig {
 	@Autowired
 	Environment env;
@@ -39,6 +39,13 @@ public class HelloConfig {
 		hello.setPrinter(stringPrinter());
 		return hello;
 		
+	}
+	
+	@Bean
+	public Hello helloCons() {
+		String consName = env.getProperty("app.xmlcons.name");
+		Hello hello = new Hello(consName, consolePrinter());
+		return hello;
 	}
 	
 }

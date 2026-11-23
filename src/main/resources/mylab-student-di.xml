@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 1. 첫 번째 학생: Setter Injection -->
+    <bean id="student1" class="mylab.student.di.xml.Student">
+        <property name="id" value="S001" />
+        <property name="name" value="배상아" />
+        <property name="score" value="95" />
+    </bean>
+
+    <!-- 2. 두 번째 학생: Constructor Injection -->
+    <bean id="student2" class="mylab.student.di.xml.Student">
+        <constructor-arg index="0" value="S002" />
+        <constructor-arg index="1" value="홍길동" />
+        <constructor-arg index="2" value="85" />
+    </bean>
+
+    <!-- 3. 강좌 정보와 학생 목록: Setter Injection -->
+    <bean id="course" class="mylab.student.di.xml.Course">
+        <property name="courseId" value="C001" />
+        <property name="courseName" value="Spring Framework" />
+
+        <property name="students">
+            <list>
+                <ref bean="student1" />
+                <ref bean="student2" />
+            </list>
+        </property>
+    </bean>
+
+    <!-- 4. 성적 서비스에 강좌 객체 주입 -->
+    <bean id="gradeService" class="mylab.student.di.xml.GradeService">
+        <property name="course" ref="course" />
+    </bean>
+
+</beans>

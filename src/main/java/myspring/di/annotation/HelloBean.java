@@ -20,7 +20,7 @@ public class HelloBean {
 	@Value("${app.setter.name}") // 어노테이션 
 	String name;
 	
-	// @Autowired <=> <property name="name" ref="stringPrinter" />
+	// @Autowired <=> <property name="name" ref="stringPrinter" />                                                                                                                     
 	@Autowired
 	@Qualifier("stringPrinter")
 	PrinterBean printer;
